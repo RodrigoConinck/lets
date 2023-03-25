@@ -8,7 +8,7 @@
 
 ##### Problema identificado: 
 
-​ Nos dias de hoje, é comum as pessoas se tornarem sedentárias devido ao grande número de confortos que a mordernidade da era atual nos proporciona. As pessoas costumam não se empenhar por falta de tempo ou motivação a realizar atividades físicas, desde as simples, até as mais avançadas. As pessoas costumam não se interessar ou correr atrás de atividades por diversos motivos, mas muitas das vezes, um amigo ou parceiro é o gatilho necessário para uma melhora no ânimo. 
+​ Nos dias de hoje, é comum as pessoas se tornarem sedentárias devido ao grande número de confortos que a modernidade da era atual nos proporciona. As pessoas costumam não se empenhar por falta de tempo ou motivação a realizar atividades físicas, desde as simples, até as mais avançadas. As pessoas costumam não se interessar ou correr atrás de atividades por diversos motivos, mas muitas das vezes, um amigo ou parceiro é o gatilho necessário para uma melhora no ânimo. 
 
 ​	A proposta do sistema LETS é ajudar o usuário a encontrar parceiros para realizar atividades físicas, utilizando um sistema de compatibilidade de atividade, localização e horários configurados pelo próprio usuário.
 
