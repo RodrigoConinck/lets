@@ -34,7 +34,7 @@ https://trello.com/b/sUlNTOZA/lets
 
 ##### Diagrama de Caso de Uso:
 
-![](AQUI DENTRO)
+![](https://github.com/RodrigoConinck/lets/blob/main/diagrama%20de%20casos%20de%20uso.png)
 
 ##### Diagrama de Classe:
 
