@@ -30,7 +30,7 @@ https://trello.com/b/sUlNTOZA/lets
 
  
 
-#### Diagrama do Projetos:
+#### Diagramas do Projeto:
 
 ##### Diagrama de Caso de Uso:
 
