@@ -18,7 +18,7 @@
 
 ##### Proposta de Solução para o Problema:
 
-​      O sistema LETS tem a proposta de proporcionar mais saúde para os seus usuários, fazendo com que ele encontre pessoas que o animem a pratica de atividades físicas. 
+​      O sistema LETS tem a proposta de proporcionar mais saúde para os seus usuários, fazendo com que eles encontrem pessoas que o animem a pratica de atividades físicas. 
 
 
 
