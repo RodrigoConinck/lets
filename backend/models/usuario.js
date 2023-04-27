@@ -3,59 +3,68 @@ const sequelize = require('../config');
 
 const Usuario = sequelize.define('Usuario', {
     id: {
-        type: DataTypes.STRING,
         allowNull: false,
-        primaryKey:true,
-        autoIncrement:true
+        autoIncrement: true,
+        primaryKey: true,
+        type: DataTypes.INTEGER
     },
     nome: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: false
     },
     idade: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
+        type: DataTypes.INTEGER
     },
     sexo: {
-        type: DataTypes.STRING,
-        allowNull: false,
+        type: DataTypes.STRING
     },
     altura: {
-        type: DataTypes.FLOAT,
-        allowNull: false,
+        type: DataTypes.FLOAT
     },
     peso: {
-        type: DataTypes.FLOAT,
-        allowNull: false,
+        type: DataTypes.FLOAT
     },
     estado: {
-        type: DataTypes.STRING,
-        allowNull: false,
+        type: DataTypes.STRING
     },
     cidade: {
-        type: DataTypes.STRING,
-        allowNull: false,
+        type: DataTypes.STRING
     },
     bairro: {
-        type: DataTypes.STRING,
-        allowNull: false,
+        type: DataTypes.STRING
     },
     atividades_preferenciais: {
-        type: DataTypes.ARRAY(DataTypes.STRING),
-        allowNull: false,
+        type: DataTypes.ARRAY(DataTypes.STRING)
     },
     frequencia: {
-        type: DataTypes.STRING,
-        allowNull: false,
+        type: DataTypes.STRING
     },
     ativo_fisicamente: {
-        type: DataTypes.BOOLEAN,
-        allowNull: false,
+        type: DataTypes.BOOLEAN
     },
     foto_perfil: {
-        type: DataTypes.STRING,
-        allowNull: true,
+        type: DataTypes.STRING
     },
-});
+    email: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true
+    },
+    senha: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    createdAt: {
+        allowNull: false,
+        type: DataTypes.DATE
+    },
+    updatedAt: {
+        allowNull: false,
+        type: DataTypes.DATE
+    }
+},
+    {
+        tableName: "usuarios"
+    });
 
 module.exports = Usuario;
