@@ -1,4 +1,4 @@
-const Usuario = require('../models/usuario')
+const Usuario = require('../../models/usuario')
 const register = async (nome, email, senha) =>{
     try {
         const usuario = await Usuario.create({ nome, email,senha });
