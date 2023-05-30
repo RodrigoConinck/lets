@@ -3,6 +3,7 @@ var app = express();
 var cors = require('cors')
 const registrar = require('./service/user/register')
 const update = require('./service/user/update')
+const login = require('./service/user/login/login')
 const bodyParser = require('body-parser')
 require('dotenv').config()
 
@@ -14,12 +15,18 @@ app.get('/', function (req, res) {
   res.send('Hello World!');
 });
 
-app.post('/login', async function (req, res) {
+app.post('/register', async function (req, res) {
   const {nome, email, senha} = req.body;
   console.log(nome,email,senha);
   const newRegister = await registrar(nome, email, senha)
   res.send(newRegister)
 });
+
+app.post('/login', async function(req, res){
+  const {email, senha} = req.body;
+  const newLogin = await login(email, senha)
+  res.send(newLogin)
+})
 
 app.post('/perfil', async function (req, res) {
   const {nome, idade, sexo, altura, peso, estado, cidade, bairro, atividades_preferenciais, frequencia, ativo_fisicamente, foto_perfil} = req.body;
