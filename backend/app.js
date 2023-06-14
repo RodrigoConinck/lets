@@ -23,9 +23,9 @@ app.post('/register', async function (req, res) {
 });
 
 app.post('/login', async function(req, res){
-  const {email, senha} = req.body;
-  const newLogin = await login(email, senha)
-  res.send(newLogin)
+  const {email, password} = req.body;
+  const token = await login(email, password)
+  res.send({token:token})
 })
 
 app.post('/perfil', async function (req, res) {
