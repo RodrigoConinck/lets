@@ -13,11 +13,11 @@ module.exports = async(req, res) => {
 }
 
 async function extractData(request) {
-    const { nome, sexo, altura, peso, estado, cidade, bairro, atividades_preferenciais, frequencia, ativo_fisicamente, email, data_nascimento, foto_perfil } = request.body
+    const { nome, sexo, altura, peso, estado, cidade, bairro, atividades_preferenciais, frequencia, ativo_fisicamente, email, data_nascimento, foto_perfil, whatsapp } = request.body
     let { senha } = request.body
     const salt = await bcrypt.genSalt(10);
     senha = await bcrypt.hash(senha, salt);
-    return { nome, sexo, altura, peso, estado, cidade, bairro, atividades_preferenciais, frequencia, ativo_fisicamente, email, senha, data_nascimento, foto_perfil }
+    return { nome, sexo, altura, peso, estado, cidade, bairro, atividades_preferenciais, frequencia, ativo_fisicamente, email, senha, data_nascimento, foto_perfil, whatsapp }
 }
 
 async function analyseData(request) {
