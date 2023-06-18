@@ -4,16 +4,17 @@ const update_user = require("../controllers/users/update")
 const delete_user = require("../controllers/users/delete")
 const getUser = require('../controllers/users/get')
 const login = require("../controllers/users/login")
+const auth = require('../middlewares/auth')
 
 const express = require('express')
 
 var router = express.Router();
 
-router.post("/", create_user)
-router.get('/getUser', getUser)
-router.get("/", retrieve_user)
-router.put("/", update_user)
-router.delete("/", delete_user)
-router.post("/", login)
+router.post("/create", create_user)
+router.get('/getUser', auth, getUser)
+router.get("/retrieve", auth, retrieve_user)
+router.put("/update", auth, update_user)
+router.delete("/delete", auth, delete_user)
+router.post("/login", login)
 
 module.exports = router
