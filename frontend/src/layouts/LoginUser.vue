@@ -51,17 +51,18 @@ export default {
 
       const userData = {
         email: this.email,
-        password: this.password
+        senha: this.password
       };
 
       axios
-        .post('http://localhost:3000/login', userData)
+        .post('http://localhost:3000/users/login', userData)
         .then((response) => {
-          console.log(response.data.token);
-          if(response.data.token){
-            localStorage.setItem('TOKEN', response.data.token);
-            this.$emit("contentDataUser", response.data.token)
-            this.$router.push('/MainPageUser')
+          console.log('=================')
+          console.log(response.data);
+          if(response.data){
+            localStorage.setItem('TOKEN', response.data);
+            this.$emit("contentDataUser", response.data)
+            this.$router.push('/UserArea')
           }
         })
         .catch((error) => {
