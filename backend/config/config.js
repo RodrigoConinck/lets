@@ -5,7 +5,7 @@ module.exports = {
     "database": process.env.PG_DATABASE,
     "host": process.env.PG_URL,
     "dialect": "postgres",
-    "port": 5433,
+    "port": process.env.PG_PORT,
     "schema": "public"
   },
   "test": {
@@ -14,7 +14,7 @@ module.exports = {
     "database": process.env.PG_DATABASE,
     "host": process.env.PG_URL,
     "dialect": "postgres",
-    "port": 5433,
+    "port": process.env.PG_PORT,
     "schema": "public"
   },
   "production": {
@@ -23,7 +23,7 @@ module.exports = {
     "database": process.env.PG_DATABASE,
     "host": process.env.PG_URL,
     "dialect": "postgres",
-    "port": 5433,
+    "port": process.env.PG_PORT,
     "schema": "public"
   }
 }
