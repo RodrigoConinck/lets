@@ -27,9 +27,11 @@ async function analyseData(request) {
 
 async function updateUser(request) {
     try {
+        const idUser= request.id
+        delete request.id
         return await Usuario.update(request, {
             where: {
-                id: request.id
+                id: idUser
             }
         })
     } catch (error) {

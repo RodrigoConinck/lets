@@ -6,7 +6,7 @@ module.exports = async (req, res) => {
         return res.send(user)
     } catch (error) {
         console.log(error)
-        return res.send(error)
+        return res.send({message: error.message})
     }
 }
 
