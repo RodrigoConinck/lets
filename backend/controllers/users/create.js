@@ -8,7 +8,9 @@ module.exports = async(req, res) => {
         const newUser = await createNewUser(requestData)
         return res.send(newUser)
     } catch (error) {
-        res.send(error)
+        console.log(error)
+        res.status(404)
+        res.send({message: error.message})
     }
 }
 
@@ -29,7 +31,8 @@ async function analyseData(request) {
 
 async function createNewUser(request) {
     try {
-        return await Usuario.create(request)
+        const user = await Usuario.create(request)
+        return user
     } catch (error) {
         throw new Error(error)
     }

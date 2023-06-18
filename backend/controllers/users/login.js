@@ -10,7 +10,7 @@ module.exports = async (req, res) => {
     res.send(token);
   } catch (error) {
     console.log(error);
-    return res.send(error);
+    return res.send({message: error.message});
   }
 };
 
