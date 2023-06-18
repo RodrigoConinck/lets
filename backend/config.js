@@ -1,9 +1,8 @@
 const Sequelize = require('sequelize');
 
-// Configuração de conexão com o banco de dados
-const sequelize = new Sequelize('letsdb', 'postgres', '9151', {
-  host: 'localhost', // host do banco de dados
-  dialect: 'postgres', // nome do banco de dados (ex: 'postgres', 'mysql', 'sqlite', 'mssql')
+const sequelize = new Sequelize(process.env.PG_DATABASE, process.env.PG_USERNAME, process.env.PG_PASSWORD, {
+  host: process.env.PG_URL, 
+  dialect: 'postgres', 
   port:5433
 });
 
