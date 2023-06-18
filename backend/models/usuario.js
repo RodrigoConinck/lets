@@ -61,6 +61,10 @@ const Usuario = sequelize.define('Usuario', {
     updatedAt: {
         allowNull: false,
         type: DataTypes.DATE
+    },
+    whatsapp: {
+        allowNull: true,
+        type: DataTypes.BIGINT
     }
 },
     {
