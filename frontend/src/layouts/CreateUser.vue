@@ -14,7 +14,6 @@
         hint="Insira um e-mail válido"
         lazy-rules
         type="email"
-        :rules="emailRules"
       />
       <q-input
         filled
@@ -56,13 +55,6 @@
         confirmPassword: '',
         nameRules: [
           (value) => !!value || 'O nome é obrigatório'
-        ],
-        emailRules: [
-          (value) => !!value || 'O e-mail é obrigatório',
-          (value) => {
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            return emailRegex.test(value) || 'Insira um e-mail válido';
-          }
         ],
         passwordRules: [
           (value) => !!value || 'A senha é obrigatória'
