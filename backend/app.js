@@ -11,6 +11,7 @@ app.use(cors())
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
+require('./routes/index')(app)
 app.get('/', function (req, res) {
   res.send('Hello World!');
 });

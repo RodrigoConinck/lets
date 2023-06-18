@@ -12,8 +12,8 @@ const Usuario = sequelize.define('Usuario', {
         type: DataTypes.STRING,
         allowNull: false
     },
-    idade: {
-        type: DataTypes.INTEGER
+    data_nascimento: {
+        type: DataTypes.DATE
     },
     sexo: {
         type: DataTypes.STRING
