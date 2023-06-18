@@ -27,11 +27,3 @@ module.exports = {
     "schema": "public"
   }
 }
-
-// "username": 'postgres',
-//     "password": "9151",
-//     "database": "letsdb",
-//     "host": "localhost",
-//     "dialect": "postgres",
-//     "port": 5433,
-//     "schema": "public"
