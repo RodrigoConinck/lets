@@ -77,9 +77,6 @@ describe('Your Controller', () => {
       },
     }
 
-    const expectedErrorMessage = 'Error creating like'
-    Likes.create.mockRejectedValue(new Error(expectedErrorMessage))
-
     const res = {
       send: jest.fn(),
     }

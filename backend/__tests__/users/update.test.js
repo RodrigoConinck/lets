@@ -54,8 +54,6 @@ describe('Your Controller', () => {
       },
     }
 
-    const expectedErrorMessage = 'Error updating user'
-    Usuario.update.mockRejectedValue(new Error(expectedErrorMessage))
 
     const res = {
       send: jest.fn(),

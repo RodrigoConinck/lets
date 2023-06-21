@@ -64,7 +64,6 @@ describe('Your Controller', () => {
       },
     }
 
-    const expectedErrorMessage = 'Usuario não existe'
     Usuario.findOne.mockResolvedValue(null)
 
     const res = {

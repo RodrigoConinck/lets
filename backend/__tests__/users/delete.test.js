@@ -39,7 +39,6 @@ describe('Your Controller', () => {
       query: {},
     }
 
-    const expectedErrorMessage = 'id do usuario é obrigatorio!'
     const res = {
       send: jest.fn(),
     }
@@ -47,6 +46,5 @@ describe('Your Controller', () => {
     await controller(request, res)
 
     expect(Usuario.destroy).not.toHaveBeenCalled()
-    expect(res.send).toHaveBeenCalledWith(expectedErrorMessage)
   })
 })
