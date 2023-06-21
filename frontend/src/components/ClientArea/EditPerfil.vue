@@ -10,24 +10,43 @@
     </div>
     <div class="user-profile__form">
         <q-input outlined class="q-mb-sm" v-model="nome" label="Nome"></q-input>
-        <q-input outlined class="q-mb-sm" v-model="data_nascimento" label="Data de Nascimento"></q-input>
-        <q-input outlined class="q-mb-sm" v-model="sexo" label="Sexo"></q-input>
+        <q-date v-model="data_nascimento" label="Data de Nascimento"></q-date>
+        <q-select v-model="sexo" label="Sexo" :options="['Masculino', 'Feminino']"></q-select>
         <q-input outlined class="q-mb-sm" v-model="altura" label="Altura"></q-input>
         <q-input outlined class="q-mb-sm" v-model="peso" label="Peso"></q-input>
         <q-input outlined class="q-mb-sm" v-model="estado" label="Estado"></q-input>
         <q-input outlined class="q-mb-sm" v-model="cidade" label="Cidade"></q-input>
         <q-input outlined class="q-mb-sm" v-model="bairro" label="Bairro"></q-input>
-        <q-input outlined class="q-mb-sm" v-model="atividades_preferenciais" label="Atividades Preferenciais"></q-input>
+        <div>
+          <p>Lista de Atividades Preferenciais</p>
+          <ul>
+            <li v-for="(atividade, index) in atividades" :key="index">
+              {{ atividade }}
+              <button @click="removerAtividade(index)" class="remover-btn">&#128465;</button>
+            </li>
+          </ul>
+          <div>
+            <input type="text" v-model="novaAtividade" placeholder="Digite uma atividade">
+            <button @click="adicionarAtividade">Adicionar</button>
+          </div>
+          <p></p>
+          
+        </div>
         <q-input outlined class="q-mb-sm" v-model="frequencia" label="Frequência"></q-input>
-        <q-input outlined class="q-mb-sm" v-model="ativo_fisicamente" label="Ativo Fisicamente"></q-input>
+        <q-toggle v-model="ativo_fisicamente" label="Ativo Fisicamente"></q-toggle>
         <q-input outlined class="q-mb-sm" v-model="foto_perfil" label="Foto de Perfil"></q-input>
-        <q-input outlined class="q-mb-sm" v-model="whatsapp" label="WhatsApp"></q-input>
+        <q-input outlined class="q-mb-sm" v-model="whatsapp" label="WhatsApp" :before="+55 " mask="99 99999-9999"></q-input>
         <q-btn color="primary" label="Salvar" @click="editProfile()"></q-btn>
     </div>
   </div>
 </template>
 
 <script>
+import { QDate } from 'quasar';
+import { QSelect } from 'quasar';
+import { QToggle } from 'quasar';
+import { QInput } from 'quasar';
+
 import axios from 'axios'
 export default {
   data() {
@@ -41,13 +60,15 @@ export default {
       estado: null,
       cidade: null,
       bairro: null,
-      atividades_preferenciais: null,
+      atividades_preferenciais:[],
       frequencia: null,
       ativo_fisicamente: null,
       foto_perfil: null,
       createdAt: null,
       updatedAt: null,
-      whatsapp: null
+      whatsapp: null,
+      novaAtividade: '',
+      atividades: []
     };
   },
   mounted() {
@@ -86,8 +107,16 @@ export default {
       });
   },
   methods: {
+    adicionarAtividade() {
+      if (this.novaAtividade.trim() !== '') {
+        this.atividades.push(this.novaAtividade);
+        this.novaAtividade = '';
+      }
+    },
+    removerAtividade(index) {
+      this.atividades.splice(index, 1);
+    },
     editProfile() {
-      console.log('porno gay')
       const payload = {
         nome: this.nome,
         data_nascimento: this.data_nascimento,
@@ -167,5 +196,13 @@ export default {
 .q-btn {
   margin-top: 20px;
   width: 100%;
+}
+.remover-btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: red;
+  margin-left: 8px;
+  font-size: 20px;
 }
 </style>
