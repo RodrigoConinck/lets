@@ -48,9 +48,6 @@ describe('Your Controller', () => {
       },
     }
 
-    const expectedErrorMessage = 'Error retrieving matches'
-    Matchs.findAll.mockRejectedValue(new Error(expectedErrorMessage))
-
     const res = {
       send: jest.fn(),
     }

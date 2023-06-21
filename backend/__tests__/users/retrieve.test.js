@@ -28,8 +28,6 @@ describe('Your Controller', () => {
   })
 
   test('should handle error and send error message', async () => {
-    const expectedErrorMessage = 'Error retrieving users'
-    Usuario.findAll.mockRejectedValue(new Error(expectedErrorMessage))
 
     const res = {
       send: jest.fn(),

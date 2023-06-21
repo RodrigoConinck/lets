@@ -48,7 +48,6 @@ describe('Your Controller', () => {
       body: {},
     }
 
-    const expectedErrorMessage = 'Campos obrigatórios'
     const res = {
       status: jest.fn().mockReturnThis(),
       send: jest.fn(),
