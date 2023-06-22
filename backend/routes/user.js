@@ -4,6 +4,7 @@ const update_user = require("../controllers/users/update")
 const delete_user = require("../controllers/users/delete")
 const getUser = require('../controllers/users/get')
 const login = require("../controllers/users/login")
+const getUserWithToken = require("../controllers/users/getUserWithToken")
 const auth = require('../middlewares/auth')
 
 const express = require('express')
@@ -15,6 +16,7 @@ router.get('/getUser', auth, getUser)
 router.get("/retrieve", auth, retrieve_user)
 router.put("/update", auth, update_user)
 router.delete("/delete", auth, delete_user)
+router.get("/getUserToken", auth, getUserWithToken)
 router.post("/login", login)
 
 module.exports = router
