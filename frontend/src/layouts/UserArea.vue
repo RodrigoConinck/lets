@@ -28,9 +28,7 @@
             <EditPerfil />
           </q-page>
           <q-page class="q-pa-md" v-if="tab === 'likes'">
-            <p v-for="n in 15" :key="n">
-              JRKLSAJFKSALJEKLAKÇLFLÇSALÇDKALÇFKJÇSAKLÇDKSALÇJLÇSALÇDKLÇASKJFLÇAJSLÇDKJLÇSAF
-            </p>
+            <ListaLikes />
           </q-page>
           <q-page class="q-pa-md" v-if="tab === 'matchs'">
             <p v-for="n in 15" :key="n">
@@ -46,6 +44,7 @@
 <script>
 import { ref } from 'vue';
 import EditPerfil from '../components/ClientArea/EditPerfil.vue'
+import ListaLikes from '../components/ClientArea/ListaLikes.vue'
 export default {
   methods: {
     logout() {
@@ -67,7 +66,8 @@ export default {
     };
   },
   components: {
-    EditPerfil
+    EditPerfil,
+    ListaLikes
   }
 };
 </script>
