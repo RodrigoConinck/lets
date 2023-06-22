@@ -33,6 +33,7 @@
       />
   
       <div>
+        <p>Retornar a tela de <a href="http://localhost:8080/#/login">Login</a>.</p>
         <q-btn label="Criar Usuário" v-on:click="createUser" type="submit" color="primary" />
         <q-btn label="Limpar" v-on:click="reset" color="primary" flat class="q-ml-sm" />
       </div>
@@ -86,7 +87,7 @@
           .post('http://localhost:3000/users/create', userData)
           .then((response) => {
             console.log(response.data);  
-            // Redirecionar para a página de login ou exibir uma mensagem de sucesso
+            this.$router.push('/login')
         })
         .catch((error) => {
             if (error.response && error.response.data && error.response.data.message === "SequelizeUniqueConstraintError: Validation error") {

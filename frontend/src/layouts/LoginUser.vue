@@ -16,9 +16,8 @@
         lazy-rules
       />
 
-      <q-toggle v-model="acceptRememberUser" label="Lembrar Usuário" />
-
       <div>
+        <p>Ainda não tem um login? <a href="http://localhost:8080/#/register">Cadastre-se já!</a></p>
         <q-btn label="Login" v-on:click="login()" type="submit" color="primary"/>
         <q-btn label="Limpar" v-on:click="reset()" color="primary" flat class="q-ml-sm" />
       </div>

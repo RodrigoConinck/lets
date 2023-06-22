@@ -8,6 +8,10 @@ const routes = [
     component: () => import('layouts/LoginUser.vue'),
   },
   {
+    path: '/register',
+    component: () => import('layouts/CreateUser.vue'),
+  },
+  {
     path: '/MainPageUser',
     component: () => import('src/layouts/MainPageUser.vue'),
   },
