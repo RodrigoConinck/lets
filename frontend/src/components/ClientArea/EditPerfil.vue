@@ -35,7 +35,7 @@
       </div>
       <q-input outlined class="q-mb-sm" v-model="frequencia" label="Frequência"></q-input>
       <q-toggle v-model="ativo_fisicamente" label="Ativo Fisicamente"></q-toggle>
-      <q-input outlined class="q-mb-sm" v-model="whatsapp" label="WhatsApp" :before="+55"
+      <q-input type="number" outlined class="q-mb-sm" v-model="whatsapp" label="WhatsApp"
         placeholder="(99) 99999-9999"></q-input>
       <q-btn color="primary" label="Salvar" @click="editProfile()"></q-btn>
     </div>
@@ -93,13 +93,13 @@ export default {
         this.estado = data.estado;
         this.cidade = data.cidade;
         this.bairro = data.bairro;
-        this.atividades_preferenciais = data.atividades_preferenciais;
+        this.atividades_preferenciais = data.atividades_preferenciais || [];
         this.frequencia = data.frequencia;
         this.ativo_fisicamente = data.ativo_fisicamente;
         this.foto_perfil = data.foto_perfil;
         this.createdAt = data.createdAt;
         this.updatedAt = data.updatedAt;
-        this.whatsapp = data.whatsapp.replace(/[^0-9]/g, '');
+        this.whatsapp = data.whatsapp;
       })
       .catch((error) => {
         console.log(error);
@@ -116,6 +116,12 @@ export default {
       this.atividades_preferenciais.splice(index, 1);
     },
     editProfile() {
+      let whatsappValue = this.whatsapp;
+      if (typeof whatsappValue === 'string' && whatsappValue.trim() === '') {
+        whatsappValue = null;
+      } else {
+        whatsappValue = whatsappValue.replace(/[^0-9]/g, '');
+      }
       const payload = {
         nome: this.nome,
         data_nascimento: this.data_nascimento,
@@ -129,7 +135,8 @@ export default {
         frequencia: this.frequencia,
         ativo_fisicamente: this.ativo_fisicamente,
         foto_perfil: this.foto_perfil,
-        whatsapp: this.whatsapp.replace(/[^0-9]/g, '')
+        whatsapp: whatsappValue
+
       };
 
       const config = {

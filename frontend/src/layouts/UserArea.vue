@@ -46,19 +46,44 @@ import { ref } from 'vue';
 import EditPerfil from '../components/ClientArea/EditPerfil.vue'
 import ListaLikes from '../components/ClientArea/ListaLikes.vue'
 export default {
+  data() {
+    return {
+      timeoutId: null
+    };
+  },
   methods: {
+    resetLogoutTimer() {
+      this.clearLogoutTimer();
+      this.timeoutId = setTimeout(this.logout, 300000);
+    },
+    clearLogoutTimer() {
+      if (this.timeoutId) {
+        clearTimeout(this.timeoutId);
+        this.timeoutId = null;
+      }
+    },
     logout() {
       localStorage.removeItem('TOKEN');
 
       this.$router.push('/login');
     },
   },
-  mounted(){
+  mounted() {
+    this.resetLogoutTimer();
+    window.addEventListener('mousemove', this.resetLogoutTimer);
+    window.addEventListener('keydown', this.resetLogoutTimer);
+    window.addEventListener('scroll', this.resetLogoutTimer);
     const token = localStorage.getItem('TOKEN');
     if (!token) {
       this.$router.push('/login');
       return;
     }
+  },
+  beforeUnmount() {
+    this.clearLogoutTimer();
+    window.removeEventListener('mousemove', this.resetLogoutTimer);
+    window.removeEventListener('keydown', this.resetLogoutTimer);
+    window.removeEventListener('scroll', this.resetLogoutTimer);
   },
   setup() {
     return {
@@ -68,7 +93,7 @@ export default {
   components: {
     EditPerfil,
     ListaLikes
-  }
+  },
 };
 </script>
   
