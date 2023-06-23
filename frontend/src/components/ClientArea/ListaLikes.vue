@@ -4,11 +4,10 @@
       <q-carousel-slide v-for="(person, index) in allPersons" :name="index" :key="index">
         <div class="custom-carousel-slide">
           <q-card class="my-card">
-            
-            <q-img :src="person.imgSrc">
-              <div class="absolute-bottom">
-                <div class="text-h6">{{ person.nome }}</div>
-              </div>
+            <q-img :src="person.imgSrc" :default-src="defaultAvatar" alt="Avatar">
+            <div class="absolute-bottom">
+              <div class="text-h6">{{ person.nome }}</div>
+            </div>
             </q-img>
             <q-card-actions>
               <q-btn flat>Action 1</q-btn>
@@ -32,10 +31,15 @@ export default {
       slide: ref(1)
     }
   },
-  data(){
-    return{
-      allPersons:[]
+  data() {
+    return {
+      allPersons: [],
+      defaultAvatar: 'caminho/para/o/seu/icone-de-avatar-padrao.png',
+      person: {
+        imgSrc: 'caminho/para/a/imagem-da-pessoa.png'
+      }
     }
+    
   },
 
   mounted() {
@@ -52,7 +56,7 @@ export default {
           'token': localStorage.getItem('TOKEN'),
         }
       };
-  
+
       axios.request(config)
         .then((response) => {
           console.log(JSON.stringify(response.data));
