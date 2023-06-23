@@ -4,6 +4,7 @@
       <q-carousel-slide v-for="(person, index) in allPersons" :name="index" :key="index">
         <div class="custom-carousel-slide">
           <q-card class="my-card">
+            
             <q-img :src="person.imgSrc">
               <div class="absolute-bottom">
                 <div class="text-h6">{{ person.nome }}</div>
