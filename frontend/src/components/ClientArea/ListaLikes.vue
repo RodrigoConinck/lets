@@ -5,13 +5,17 @@
         <div class="custom-carousel-slide">
           <q-card class="my-card">
             <q-img :src="person.imgSrc" :default-src="defaultAvatar" alt="Avatar">
-            <div class="absolute-bottom">
-              <div class="text-h6">{{ person.nome }}</div>
-            </div>
+              <div class="absolute-bottom">
+                <div class="text-h6">{{ person.nome }}</div>
+                <div class="text-h7">{{ person.cidade }} , {{ person.bairro }}</div>
+                <div class="text-h7">Atividades preferenciais:</div>
+                <div class="text-h7">{{ person.atividades_preferenciais }}</div>
+                <div class="text-h7">Idade: {{ person.idade }}</div>
+              </div>
             </q-img>
             <q-card-actions>
-              <q-btn flat>Action 1</q-btn>
-              <q-btn flat>Action 2</q-btn>
+              <q-btn flat @click="nextSlide">Não Likei</q-btn>
+              <q-btn flat @click="createLike(person)">Like</q-btn>
             </q-card-actions>
           </q-card>
         </div>
@@ -39,7 +43,7 @@ export default {
         imgSrc: 'caminho/para/a/imagem-da-pessoa.png'
       }
     }
-    
+
   },
 
   mounted() {
@@ -51,7 +55,7 @@ export default {
       let config = {
         method: 'get',
         maxBodyLength: Infinity,
-        url: 'http://localhost:3000/users/retrieve',
+        url: 'http://localhost:3000/users/getNearPersons',
         headers: {
           'token': localStorage.getItem('TOKEN'),
         }
@@ -65,6 +69,38 @@ export default {
         .catch((error) => {
           console.log(error);
         });
+    },
+    createLike(person) {
+      let data = JSON.stringify({
+        "curtidor": '',
+        "curtido": person.id
+      });
+
+      let config = {
+        method: 'post',
+        maxBodyLength: Infinity,
+        url: 'http://localhost:3000/likes/create',
+        headers: {
+          'token': localStorage.getItem('TOKEN'),
+          'Content-Type': 'application/json'
+        },
+        data: data
+      };
+
+      axios.request(config)
+        .then((response) => {
+          console.log(JSON.stringify(response.data));
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+
+
+      console.log('Like criado para:', person)
+      this.slide++
+    },
+    nextSlide() {
+      this.slide++
     }
   }
 }
