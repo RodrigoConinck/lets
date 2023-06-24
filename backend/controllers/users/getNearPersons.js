@@ -10,7 +10,6 @@ module.exports = async (req, res) => {
             const idade = calcularIdade(user.data_nascimento)
             return { ...user.toJSON(), idade}
         })
-        console.log(usuarioComIdade);
         return res.send(usuarioComIdade)
     } catch (error) {
         console.log(error)
