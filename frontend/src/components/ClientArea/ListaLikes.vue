@@ -7,17 +7,19 @@
             <q-img :src="person.imgSrc" :default-src="defaultAvatar" alt="Avatar">
               <div class="absolute-bottom">
                 <div class="text-h6">{{ person.nome }}</div>
-                <div class="text-h7">{{ person.cidade }} , {{ person.bairro }}</div>
+                <div class="text-h7">{{ person.cidade }}, {{ person.bairro }}</div>
                 <div class="text-h7">Atividades preferenciais:</div>
                 <div class="text-h7">{{ person.atividades_preferenciais }}</div>
                 <div class="text-h7">Idade: {{ person.idade }}</div>
               </div>
             </q-img>
-            <q-card-actions>
-              <q-btn flat @click="nextSlide">Não Likei</q-btn>
-              <q-btn flat @click="createLike(person)">Like</q-btn>
-            </q-card-actions>
+            <div class="my-card-actions">
+              <q-btn flat class="no-like-btn" @click="nextSlide">Não Likei</q-btn>
+              <q-btn flat class="like-btn" @click="createLike(person)">Like</q-btn>
+            </div>
           </q-card>
+          
+          
         </div>
       </q-carousel-slide>
     </q-carousel>
@@ -106,11 +108,10 @@ export default {
 </script>
 <style>
 .custom-carousel-slide {
-  max-width: 100%;
-  max-height: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: stretch;
+  height: 100%;
 }
 
 .custom-carousel-slide img {
