@@ -116,12 +116,6 @@ export default {
       this.atividades_preferenciais.splice(index, 1);
     },
     editProfile() {
-      let whatsappValue = this.whatsapp;
-      if (typeof whatsappValue === 'string' && whatsappValue.trim() === '') {
-        whatsappValue = null;
-      } else {
-        whatsappValue = whatsappValue
-      }
       const payload = {
         nome: this.nome,
         data_nascimento: this.data_nascimento,
@@ -135,7 +129,7 @@ export default {
         frequencia: this.frequencia,
         ativo_fisicamente: this.ativo_fisicamente,
         foto_perfil: this.foto_perfil,
-        whatsapp: whatsappValue
+        whatsapp: this.whatsapp
 
       };
 

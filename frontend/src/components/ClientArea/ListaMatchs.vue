@@ -13,7 +13,8 @@
                             <p></p>
                             {{ matchItem.otherUser.cidade }}, {{ matchItem.otherUser.bairro }}
                             <p></p>
-                            <a target="_blank" :href="getWhatsAppUrl(matchItem.otherUser.whatsapp)">
+                            <a :href="getWhatsAppUrl(matchItem.otherUser.whatsapp)" target="_blank"
+                                rel="noopener noreferrer">
                                 {{ matchItem.otherUser.whatsapp }}
                             </a>
                             <p></p>
@@ -41,10 +42,6 @@ export default {
         this.getMatchList()
     },
     methods: {
-        getWhatsAppUrl(phoneNumber) {
-            const formattedPhoneNumber = phoneNumber // Remove non-digit characters
-            return `https://wa.me/55${formattedPhoneNumber}`;
-        },
         getMatchList() {
             let config = {
                 method: 'get',
@@ -63,6 +60,10 @@ export default {
                 .catch((error) => {
                     console.log(error);
                 });
+        },
+        getWhatsAppUrl(phoneNumber) {
+            const formattedPhoneNumber = phoneNumber.replace(/\D/g, ''); // Remove non-digit characters
+            return `https://wa.me/55${formattedPhoneNumber}`;
         }
     }
 }
