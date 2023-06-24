@@ -13,8 +13,7 @@
                             <p></p>
                             {{ matchItem.otherUser.cidade }}, {{ matchItem.otherUser.bairro }}
                             <p></p>
-                            <a :href="getWhatsAppUrl(matchItem.otherUser.whatsapp)" target="_blank"
-                                rel="noopener noreferrer">
+                            <a v-bind:href="getWhatsAppUrl(matchItem.otherUser.whatsapp)" target="_blank" rel="noopener noreferrer">
                                 {{ matchItem.otherUser.whatsapp }}
                             </a>
                             <p></p>
