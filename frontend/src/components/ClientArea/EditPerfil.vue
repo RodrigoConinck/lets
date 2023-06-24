@@ -120,7 +120,7 @@ export default {
       if (typeof whatsappValue === 'string' && whatsappValue.trim() === '') {
         whatsappValue = null;
       } else {
-        whatsappValue = whatsappValue.replace(/[^0-9]/g, '');
+        whatsappValue = whatsappValue
       }
       const payload = {
         nome: this.nome,

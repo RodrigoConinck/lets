@@ -31,9 +31,7 @@
             <ListaLikes />
           </q-page>
           <q-page class="q-pa-md" v-if="tab === 'matchs'">
-            <p v-for="n in 15" :key="n">
-              VASCO SEGUNDA DIVISAO
-            </p>
+            <ListaMatchs/>
           </q-page>
         </q-scroll-area>
       </q-page-container>
@@ -45,6 +43,7 @@
 import { ref } from 'vue';
 import EditPerfil from '../components/ClientArea/EditPerfil.vue'
 import ListaLikes from '../components/ClientArea/ListaLikes.vue'
+import ListaMatchs from '../components/ClientArea/ListaMatchs.vue'
 export default {
   data() {
     return {
@@ -92,7 +91,8 @@ export default {
   },
   components: {
     EditPerfil,
-    ListaLikes
+    ListaLikes,
+    ListaMatchs
   },
 };
 </script>
