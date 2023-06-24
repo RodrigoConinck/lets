@@ -30,12 +30,10 @@ async function retrieveUser(req) {
         const usuarios = await Usuario.findAll({
             where: {
                 id: {
-                    [Op.not]: req.infUser.id
-                },
-                cidade: req.infUser.cidade,
-                id: {
+                    [Op.not]: req.infUser.id,
                     [Op.notIn]: likedUserIds
-                }
+                },
+                cidade: req.infUser.cidade
             }
         });
 
