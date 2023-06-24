@@ -13,7 +13,9 @@
                             <p></p>
                             {{ matchItem.otherUser.cidade }}, {{ matchItem.otherUser.bairro }}
                             <p></p>
-                            <a v-bind:href="getWhatsAppUrl(matchItem.otherUser.whatsapp)" target="_blank" rel="noopener noreferrer">
+                            <a :href="getWhatsAppUrl(matchItem.otherUser.whatsapp)"
+                                @click="openWhatsApp(matchItem.otherUser.whatsapp)" target="_blank"
+                                rel="noopener noreferrer">
                                 {{ matchItem.otherUser.whatsapp }}
                             </a>
                             <p></p>
@@ -60,8 +62,12 @@ export default {
                     console.log(error);
                 });
         },
-        getWhatsAppUrl(phoneNumber) {
-            const formattedPhoneNumber = phoneNumber.replace(/\D/g, ''); // Remove non-digit characters
+        openWhatsApp(whatsappNumber) {
+            const url = this.getWhatsAppUrl(whatsappNumber);
+            window.open(url, '_blank');
+        },
+        getWhatsAppUrl(whatsappNumber) {
+            const formattedPhoneNumber = whatsappNumber
             return `https://wa.me/55${formattedPhoneNumber}`;
         }
     }
