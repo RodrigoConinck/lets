@@ -106,6 +106,8 @@ export default {
 </script>
 <style>
 .custom-carousel-slide {
+  max-width: 100%;
+  max-height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;

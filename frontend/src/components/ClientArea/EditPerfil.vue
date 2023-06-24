@@ -158,7 +158,7 @@ export default {
 
     handleFileChange(event) {
       const file = event.target.files[0];
-      console.log('Arquivo selecionado:', file);
+      this.uploadImage(file);
     }
   }
 };
