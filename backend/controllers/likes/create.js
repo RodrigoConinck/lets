@@ -5,7 +5,7 @@ module.exports = async(req, res) => {
     try {
         const requestData = await extractData(req)
         await analyseData(requestData)
-        const newLike = await createNewLike(requestData)
+        const newLike = await createNewLike(req)
         const isMatch = await verifyMatch(newLike)
         return res.send(newLike)
     } catch (error) {
@@ -19,15 +19,18 @@ async function extractData(request) {
 }
 
 async function analyseData(request) {
-    const { fk_curtidor, fk_curtido } = request
-    if(!fk_curtidor || !fk_curtido) {
+    const { fk_curtido } = request
+    if(!fk_curtido) {
         throw new Error('Campos obrigatórios')
     }
 }
 
 async function createNewLike(request) {
     try {
-        let like =  await Likes.create(request)
+        let like =  await Likes.create({
+            fk_curtidor: request.infUser.id,
+            fk_curtido: request.body.curtido
+        })
         like = like.dataValues
         return like
 
