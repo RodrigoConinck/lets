@@ -1,28 +1,31 @@
 <template>
   <div class="q-pa-md">
-    <q-carousel swipeable animated v-model="slide" thumbnails infinite>
+    <q-carousel v-if="slide < allPersons.length" swipeable animated v-model="slide" thumbnails infinite>
       <q-carousel-slide v-for="(person, index) in allPersons" :name="index" :key="index">
         <div class="custom-carousel-slide">
           <q-card class="my-card">
-            <q-img :src="person.imgSrc" :default-src="defaultAvatar" alt="Avatar">
-              <div class="absolute-bottom">
-                <div class="text-h6">{{ person.nome }}</div>
-                <div class="text-h7">{{ person.cidade }}, {{ person.bairro }}</div>
-                <div class="text-h7">Atividades preferenciais:</div>
-                <div class="text-h7">{{ person.atividades_preferenciais }}</div>
-                <div class="text-h7">Idade: {{ person.idade }}</div>
-              </div>
-            </q-img>
+            <img style="max-width: 200px; max-height: 200px" v-if="person.foto_perfil" size="150px"
+              :src="person.foto_perfil" />
+            <q-avatar v-else size="150px" text-color="white" color="primary" icon="person"></q-avatar>
+            <div class="absolute-bottom">
+              <div class="text-h6">{{ person.nome }}</div>
+              <div class="text-h7">{{ person.cidade }}, {{ person.bairro }}</div>
+              <div class="text-h7">Atividades preferenciais:</div>
+              <div class="text-h7">{{ person.atividades_preferenciais }}</div>
+              <div class="text-h7">Idade: {{ person.idade }}</div>
+            </div>
             <div class="my-card-actions">
               <q-btn flat class="no-like-btn" @click="nextSlide">Não Likei</q-btn>
               <q-btn flat class="like-btn" @click="createLike(person)">Like</q-btn>
             </div>
           </q-card>
-          
-          
         </div>
       </q-carousel-slide>
     </q-carousel>
+    <div v-if="slide === allPersons.length">
+      <div class="text-h6">Não há pessoas próximas a você, verifique sua localização na edição de perfil ou aguarde.</div>
+      <q-btn flat @click="reloadPage">Recarregar</q-btn>
+    </div>
   </div>
 </template>
   
@@ -34,7 +37,7 @@ import axios from 'axios'
 export default {
   setup() {
     return {
-      slide: ref(1)
+      slide: ref(0)
     }
   },
   data() {
@@ -52,6 +55,9 @@ export default {
     this.getAllUsers()
   },
   methods: {
+    reloadPage() {
+      location.reload();
+    },
     getAllUsers() {
       let config = {
         method: 'get',
