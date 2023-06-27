@@ -4,7 +4,7 @@
       <q-carousel-slide v-for="(person, index) in allPersons" :name="index" :key="index">
         <div class="custom-carousel-slide">
           <q-card class="my-card">
-            <img style="max-width: 200px; max-height: 200px" v-if="person.foto_perfil" size="150px"
+            <img style="max-width: 200px; max-height: 200px" alt="foto_perfil" v-if="person.foto_perfil" size="150px"
               :src="person.foto_perfil" />
             <q-avatar v-else size="150px" text-color="white" color="primary" icon="person"></q-avatar>
             <div class="absolute-bottom">
