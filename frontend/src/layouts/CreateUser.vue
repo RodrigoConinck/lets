@@ -33,7 +33,7 @@
       />
   
       <div>
-        <p>Retornar a tela de <a href="http://localhost:8080/#/login">Login</a>.</p>
+        <p>Retornar a tela de <a :href="process.env.APP_VUE_API_URL + '/login'">login</a>.</p>
         <q-btn label="Criar Usuário" v-on:click="createUser" type="submit" color="primary" />
         <q-btn label="Limpar" v-on:click="reset" color="primary" flat class="q-ml-sm" />
       </div>
