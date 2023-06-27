@@ -1,3 +1,5 @@
+const DotEnv = require('dotenv-webpack');
+const path = require('path');
 /* eslint-env node */
 
 /*
@@ -76,6 +78,12 @@ module.exports = configure(function (ctx) {
       chainWebpack (chain) {
         chain.plugin('eslint-webpack-plugin')
           .use(ESLintPlugin, [{ extensions: [ 'js', 'vue' ] }])
+      },
+      extendWebpack(config) {
+        config.resolve.alias['socket.io-client'] = path.resolve(__dirname, 'node_modules/socket.io-client');
+        config.plugins.push(
+          new DotEnv()
+        );
       }
       
     },
@@ -92,8 +100,8 @@ module.exports = configure(function (ctx) {
     // https://v2.quasar.dev/quasar-cli-webpack/quasar-config-js#Property%3A-framework
     framework: {
       config: {},
-
-      // iconSet: 'material-icons', // Quasar icon set
+      // iconSet: 'bootstrap-icons',
+      iconSet: 'material-icons', // Quasar icon set
       // lang: 'en-US', // Quasar language pack
 
       // For special cases outside of where the auto-import strategy can have an impact
@@ -104,7 +112,8 @@ module.exports = configure(function (ctx) {
       // directives: [],
 
       // Quasar plugins
-      plugins: []
+      plugins: [
+      ]
     },
 
     // animations: 'all', // --- includes all animations
@@ -113,7 +122,7 @@ module.exports = configure(function (ctx) {
 
     // https://v2.quasar.dev/quasar-cli-webpack/developing-ssr/configuring-ssr
     ssr: {
-      pwa: false,
+      pwa: true,
 
       // manualStoreHydration: true,
       // manualPostHydrationTrigger: true,
@@ -152,9 +161,9 @@ module.exports = configure(function (ctx) {
       
 
       manifest: {
-        name: `Lets`,
-        short_name: `Lets`,
-        description: `Aplicativo para unir pessoas que querem praticar atividades físicas`,
+        name: `BaristaPro`,
+        short_name: `BaristaPro`,
+        description: `A Quasar Project`,
         display: 'standalone',
         orientation: 'portrait',
         background_color: '#ffffff',

@@ -72,7 +72,7 @@ export default {
     let config = {
       method: 'get',
       maxBodyLength: Infinity,
-      url: 'http://localhost:3000/users/getUserToken',
+      url: process.env.APP_VUE_API_URL + '/users/getUserToken',
       headers: {
         'token': localStorage.getItem('TOKEN')
       }
@@ -133,7 +133,7 @@ export default {
       const config = {
         method: 'put',
         maxBodyLength: Infinity,
-        url: 'http://localhost:3000/users/update?id=' + this.id,
+        url: process.env.APP_VUE_API_URL + '/users/update?id=' + this.id,
         headers: {
           'token': localStorage.getItem('TOKEN'),
           'Content-Type': 'application/json'
@@ -142,7 +142,7 @@ export default {
       };
 
       axios.request(config)
-        .then((response) => {
+        .then(() => {
           console.log("Perfil Atualizado");
         })
         .catch((error) => {
@@ -165,7 +165,7 @@ export default {
       const config = {
         method: 'post',
         maxBodyLength: Infinity,
-        url: 'http://localhost:3000/users/upload',
+        url: process.env.APP_VUE_API_URL + '/users/upload',
         headers: {
           'token': localStorage.getItem('TOKEN'),
           'Content-Type': 'multipart/form-data'
@@ -174,7 +174,7 @@ export default {
       };
 
       axios.request(config)
-        .then((response) => {
+        .then(() => {
           console.log(JSON.stringify("Foto Atualizada"));
         })
         .catch((error) => {
