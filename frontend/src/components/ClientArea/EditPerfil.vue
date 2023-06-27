@@ -3,7 +3,7 @@
     
     <div class="user-profile__avatar">
       <input type="file" accept="image/*" @change="handleFileChange" ref="fileInput" style="display: none">
-      <img style="max-width: 200px; max-height: 200px" v-if="foto_perfil" size="150px" :src="foto_perfil" @click="openFileInput" />
+      <img style="max-width: 200px; max-height: 200px" alt="foto_perfil" v-if="foto_perfil" size="150px" :src="foto_perfil" @click="openFileInput" />
       <q-avatar v-else size="150px" text-color="white" color="primary" icon="person" @click="openFileInput"></q-avatar>
     </div>
     <div class="user-profile__form">
@@ -126,7 +126,6 @@ export default {
         atividades_preferenciais: this.atividades_preferenciais,
         frequencia: this.frequencia,
         ativo_fisicamente: this.ativo_fisicamente,
-        foto_perfil: this.foto_perfil,
         whatsapp: this.whatsapp,
         foto_perfil: this.foto_perfil
       };
