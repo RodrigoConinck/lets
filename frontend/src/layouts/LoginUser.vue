@@ -17,7 +17,7 @@
       />
 
       <div>
-        <p>Ainda não tem um login? <a :href="process.env.APP_VUE_API_URL + '/register'">Cadastre-se já!</a></p>
+        <p>Ainda não tem um login? <a href="#/register">Cadastre-se já!</a></p>
         <q-btn label="Login" v-on:click="login()" type="submit" color="primary"/>
         <q-btn label="Limpar" v-on:click="reset()" color="primary" flat class="q-ml-sm" />
       </div>
@@ -54,7 +54,7 @@ export default {
       };
 
       axios
-        .post(process.env.APP_VUE_API_URL + '/users/login', userData)
+        .post('http://localhost:3000/users/login', userData)
         .then((response) => {
           console.log('=================')
           console.log(response.data);
