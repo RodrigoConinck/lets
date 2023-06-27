@@ -143,7 +143,7 @@ export default {
 
       axios.request(config)
         .then((response) => {
-          console.log(JSON.stringify(response.data));
+          console.log("Perfil Atualizado");
         })
         .catch((error) => {
           console.log(error);
@@ -175,7 +175,7 @@ export default {
 
       axios.request(config)
         .then((response) => {
-          console.log(JSON.stringify(response.data));
+          console.log(JSON.stringify("Foto Atualizada"));
         })
         .catch((error) => {
           console.log(error);

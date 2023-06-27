@@ -15,8 +15,9 @@
               <div class="text-h7">Idade: {{ person.idade }}</div>
             </div>
             <div class="my-card-actions">
-              <q-btn flat class="no-like-btn" @click="nextSlide">Não Likei</q-btn>
-              <q-btn flat class="like-btn" @click="createLike(person)">Like</q-btn>
+              <q-btn flat class="no-like-btn" @click="nextSlide">Não</q-btn>
+              <a>|</a>
+              <q-btn flat class="like-btn" @click="createLike(person)">Lets!</q-btn>
             </div>
           </q-card>
         </div>
@@ -70,7 +71,7 @@ export default {
 
       axios.request(config)
         .then((response) => {
-          console.log(JSON.stringify(response.data));
+          console.log(JSON.stringify("Exibindo pessoas próximas"));
           this.allPersons = response.data
         })
         .catch((error) => {
@@ -96,7 +97,7 @@ export default {
 
       axios.request(config)
         .then((response) => {
-          console.log(JSON.stringify(response.data));
+          console.log(JSON.stringify("Curtida enviada"));
         })
         .catch((error) => {
           console.log(error);

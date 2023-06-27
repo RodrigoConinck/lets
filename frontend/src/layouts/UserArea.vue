@@ -17,7 +17,7 @@
 
         <q-tabs v-model="tab" class="justify-center">
           <q-tab name="perfil" label="Perfil" icon="person" />
-          <q-tab name="likes" label="Likes" icon="thumb_up" />
+          <q-tab name="likes" label="LETS" icon="thumb_up" />
           <q-tab name="matchs" label="Matchs" icon="favorite" />
         </q-tabs>
       </q-header>
