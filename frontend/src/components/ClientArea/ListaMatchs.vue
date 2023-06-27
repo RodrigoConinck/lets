@@ -9,6 +9,10 @@
                 <q-card-section v-if="matchList.length > 0">
                     <ul>
                         <li v-for="(matchItem, index) in matchList" :key="index">
+                            <img style="max-width: 150px; max-height: 150px" alt="foto_perfil" v-if="matchItem.otherUser.foto_perfil"
+                                size="150px" :src="matchItem.otherUser.foto_perfil" />
+                            <q-avatar v-else size="150px" text-color="white" color="primary" icon="person"></q-avatar>
+                            <p></p>
                             {{ matchItem.otherUser.nome }}, {{ matchItem.idade }}
                             <p></p>
                             {{ matchItem.otherUser.cidade }}, {{ matchItem.otherUser.bairro }}
@@ -55,7 +59,7 @@ export default {
 
             axios.request(config)
                 .then((response) => {
-                    console.log(JSON.stringify(response.data));
+                    console.log(JSON.stringify("Exibindo lista de Matchs"));
                     this.matchList = response.data
                 })
                 .catch((error) => {
