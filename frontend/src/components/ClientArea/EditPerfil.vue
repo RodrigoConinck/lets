@@ -1,11 +1,9 @@
 <template>
   <div class="user-profile">
-    <div class="user-profile__header">
-      <h2>Perfil do Usuário</h2>
-    </div>
+    
     <div class="user-profile__avatar">
       <input type="file" accept="image/*" @change="handleFileChange" ref="fileInput" style="display: none">
-      <q-avatar v-if="foto_perfil" size="150px" :src="foto_perfil" @click="openFileInput"></q-avatar>
+      <img style="max-width: 200px; max-height: 200px" v-if="foto_perfil" size="150px" :src="foto_perfil" @click="openFileInput" />
       <q-avatar v-else size="150px" text-color="white" color="primary" icon="person" @click="openFileInput"></q-avatar>
     </div>
     <div class="user-profile__form">
@@ -129,8 +127,8 @@ export default {
         frequencia: this.frequencia,
         ativo_fisicamente: this.ativo_fisicamente,
         foto_perfil: this.foto_perfil,
-        whatsapp: this.whatsapp
-
+        whatsapp: this.whatsapp,
+        foto_perfil: this.foto_perfil
       };
 
       const config = {
@@ -151,6 +149,7 @@ export default {
         .catch((error) => {
           console.log(error);
         });
+
     },
     openFileInput() {
       this.$refs.fileInput.click();
@@ -159,9 +158,33 @@ export default {
     handleFileChange(event) {
       const file = event.target.files[0];
       this.uploadImage(file);
+    },
+    uploadImage(file) {
+      const formData = new FormData();
+      formData.append('image', file);
+
+      const config = {
+        method: 'post',
+        maxBodyLength: Infinity,
+        url: 'http://localhost:3000/users/upload',
+        headers: {
+          'token': localStorage.getItem('TOKEN'),
+          'Content-Type': 'multipart/form-data'
+        },
+        data: formData
+      };
+
+      axios.request(config)
+        .then((response) => {
+          console.log(JSON.stringify(response.data));
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     }
-  }
-};
+
+  },
+}
 </script>
 
 <style scoped>
