@@ -63,7 +63,7 @@ export default {
       let config = {
         method: 'get',
         maxBodyLength: Infinity,
-        url: 'http://localhost:3000/users/getNearPersons',
+        url: process.env.APP_VUE_API_URL + '/users/getNearPersons',
         headers: {
           'token': localStorage.getItem('TOKEN'),
         }
@@ -87,7 +87,7 @@ export default {
       let config = {
         method: 'post',
         maxBodyLength: Infinity,
-        url: 'http://localhost:3000/likes/create',
+        url: process.env.APP_VUE_API_URL + '/likes/create',
         headers: {
           'token': localStorage.getItem('TOKEN'),
           'Content-Type': 'application/json'

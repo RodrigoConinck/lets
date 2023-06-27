@@ -54,7 +54,7 @@ export default {
       };
 
       axios
-        .post('http://localhost:3000/users/login', userData)
+        .post(process.env.APP_VUE_API_URL + '/users/login', userData)
         .then((response) => {
           console.log('=================')
           console.log(response.data);

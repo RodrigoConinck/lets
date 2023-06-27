@@ -51,7 +51,7 @@ export default {
             let config = {
                 method: 'get',
                 maxBodyLength: Infinity,
-                url: 'http://localhost:3000/matchs/retrieve',
+                url: process.env.APP_VUE_API_URL + '/matchs/retrieve',
                 headers: {
                     'token': localStorage.getItem('TOKEN'),
                 }

@@ -53,8 +53,8 @@ async function verifyMatch(newLike){
            await Matchs.create({
                 fk_primeiro_usuario: isMatch.fk_curtidor,
                 fk_segundo_usuario: isMatch.fk_curtido
-            }).then((response) => {
-                console.log(response)
+            }).then(() => {
+                console.log("Match criado")
             }).catch((error) => {
                 console.log(error)
             }) 
