@@ -47,7 +47,7 @@ export default {
       this.password=''
     },
     login() {
-
+      console.log(process.env.APP_VUE_API)
       const userData = {
         email: this.email,
         senha: this.password
