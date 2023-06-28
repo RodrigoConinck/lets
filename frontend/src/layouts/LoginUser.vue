@@ -47,7 +47,7 @@ export default {
       this.password=''
     },
     login() {
-      console.log(process.env.APP_VUE_API  + '/users/login')
+      console.log(process.env.APP_VUE_API_URL + '/users/login')
       const userData = {
         email: this.email,
         senha: this.password
@@ -55,10 +55,10 @@ export default {
 
       axios
         .post(process.env.APP_VUE_API + '/users/login', userData)
-        .then(() => {
-          if(userData){
-            localStorage.setItem('TOKEN', userData);
-            this.$emit("contentDataUser", userData)
+        .then((response) => {
+          if(response.data){
+            localStorage.setItem('TOKEN', response.data);
+            this.$emit("contentDataUser", response.data)
             this.$router.push('/UserArea')
           }
         })
