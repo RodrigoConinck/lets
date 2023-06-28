@@ -81,13 +81,11 @@
           email: this.email,
           senha: this.password
         };
-
-        console.log(response.data); 
   
         axios
           .post(process.env.APP_VUE_API_URL + '/users/create', userData)
-          .then((response) => {
-            console.log(response.data);  
+          .then(() => {
+            console.log(userData);  
             this.$router.push('/login')
         })
         .catch((error) => {
