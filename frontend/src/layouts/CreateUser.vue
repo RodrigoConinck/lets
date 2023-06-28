@@ -83,7 +83,7 @@
         };
   
         axios
-          .post(process.env.APP_VUE_API_URL + '/users/create', userData)
+          .post(process.env.APP_VUE_API  + '/users/create', userData)
           .then(() => {
             console.log(userData);  
             this.$router.push('/login')
