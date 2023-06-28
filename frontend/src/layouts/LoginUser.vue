@@ -54,7 +54,8 @@ export default {
       };
 
       axios
-        .post('${process.env.APP_VUE_API}/users/login', userData)
+        const apiURL = process.env.APP_VUE_API
+        .post(apiURL + '/users/login', userData)
         .then((response) => {
           console.log('=================')
           console.log(process.env.APP_VUE_API)
