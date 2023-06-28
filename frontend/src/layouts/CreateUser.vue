@@ -81,6 +81,8 @@
           email: this.email,
           senha: this.password
         };
+
+        console.log(response.data); 
   
         axios
           .post(process.env.APP_VUE_API_URL + '/users/create', userData)
