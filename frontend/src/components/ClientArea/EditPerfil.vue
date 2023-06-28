@@ -1,9 +1,10 @@
 <template>
   <div class="user-profile">
-    
+
     <div class="user-profile__avatar">
       <input type="file" accept="image/*" @change="handleFileChange" ref="fileInput" style="display: none">
-      <img style="max-width: 200px; max-height: 200px" alt="foto_perfil" v-if="foto_perfil" size="150px" :src="foto_perfil" @click="openFileInput" />
+      <img style="max-width: 200px; max-height: 200px" alt="foto_perfil" v-if="foto_perfil" size="150px"
+        :src="foto_perfil" @click="openFileInput" />
       <q-avatar v-else size="150px" text-color="white" color="primary" icon="person" @click="openFileInput"></q-avatar>
     </div>
     <div class="user-profile__form">
@@ -72,7 +73,7 @@ export default {
     let config = {
       method: 'get',
       maxBodyLength: Infinity,
-      url: process.env.APP_VUE_API_URL + '/users/getUserToken',
+      url: process.env.APP_VUE_API + '/users/getUserToken',
       headers: {
         'token': localStorage.getItem('TOKEN')
       }
@@ -133,7 +134,7 @@ export default {
       const config = {
         method: 'put',
         maxBodyLength: Infinity,
-        url: process.env.APP_VUE_API_URL + '/users/update?id=' + this.id,
+        url: process.env.APP_VUE_API + '/users/update?id=' + this.id,
         headers: {
           'token': localStorage.getItem('TOKEN'),
           'Content-Type': 'application/json'
@@ -165,7 +166,7 @@ export default {
       const config = {
         method: 'post',
         maxBodyLength: Infinity,
-        url: process.env.APP_VUE_API_URL + '/users/upload',
+        url: process.env.APP_VUE_API + '/users/upload',
         headers: {
           'token': localStorage.getItem('TOKEN'),
           'Content-Type': 'multipart/form-data'
