@@ -82,7 +82,6 @@
           senha: this.password
         };
   
-        // Fazer a requisição para criar o usuário
         axios
           .post(process.env.APP_VUE_API_URL + '/users/create', userData)
           .then((response) => {
