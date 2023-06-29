@@ -5,12 +5,12 @@ const jwt = require('jsonwebtoken')
 module.exports = async (req, res) => {
   try {
     const dataRequest = extractData(req);
-    await validationLogin(dataRequest);
+    validationLogin(dataRequest);
     const token = await findUser(dataRequest);
     res.send(token);
   } catch (error) {
     console.log(error);
-    return res.send({message: error.message});
+    return res.status(400).send({message: error.message});
   }
 };
 
@@ -19,8 +19,8 @@ function extractData(request) {
   return { email, senha };
 }
 
-async function validationLogin(dataRequest) {
-  if (!dataRequest.email || !dataRequest.senha) {
+function validationLogin(dataRequest) {
+  if ((!dataRequest.email || dataRequest.email.trim() == '') || (!dataRequest.senha || dataRequest.senha.trim() == '')) {
     throw new Error("Login ou Senha inválida");
   }
 }

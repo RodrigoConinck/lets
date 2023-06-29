@@ -9,7 +9,7 @@ module.exports = async(req, res) => {
         const isMatch = await verifyMatch(newLike)
         return res.send(newLike)
     } catch (error) {
-        res.send({message: error.message})
+        return res.status(400).send({message: error.message});
     }
 }
 
