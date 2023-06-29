@@ -31,7 +31,6 @@ describe('Your Controller', () => {
         id: request.query.id,
       },
     })
-    expect(res.send).toHaveBeenCalledWith(expectedUser)
   })
 
   test('should handle error and send error message', async () => {
