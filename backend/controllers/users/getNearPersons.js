@@ -26,13 +26,23 @@ async function retrieveUser(req) {
         });
         const likedUserIds = likes.map(like => like.fk_curtido);
 
+
+        const currentCity = await Usuario.findOne({
+            raw: true,
+            where: {
+                id: req.infUser.id
+            },
+            attributes: ['cidade']
+        })
+        console.log('=============')
+        console.log(currentCity)
         const usuarios = await Usuario.findAll({
             where: {
                 id: {
                     [Op.not]: req.infUser.id,
                     [Op.notIn]: likedUserIds
                 },
-                cidade: req.infUser.cidade
+                cidade: currentCity.cidade
             }
         });
 
