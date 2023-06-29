@@ -9,7 +9,7 @@ module.exports = async (req, res) => {
         return res.send(matchs)
     } catch (error) {
         console.log(error)
-        return res.send({message: error.message})
+        return res.status(400).send({message: error.message});
     }
 }
 
