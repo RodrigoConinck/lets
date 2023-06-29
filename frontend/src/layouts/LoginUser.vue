@@ -54,9 +54,9 @@ export default {
       };
 
       axios
-        console.log(process.env.APP_VUE_API)
         .post(process.env.APP_VUE_API + '/users/login', userData)
         .then((response) => {
+          console.log(process.env.APP_VUE_API)
           if(response.data){
             localStorage.setItem('TOKEN', response.data);
             this.$emit("contentDataUser", response.data)
