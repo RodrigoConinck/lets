@@ -54,6 +54,7 @@ export default {
       };
 
       axios
+        console.log(process.env.APP_VUE_API)
         .post(process.env.APP_VUE_API + '/users/login', userData)
         .then((response) => {
           if(response.data){
