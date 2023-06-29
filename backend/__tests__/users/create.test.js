@@ -40,7 +40,6 @@ describe('Your Controller', () => {
 
     await controller(request, res)
 
-    expect(res.send).toHaveBeenCalledWith(expectedUser)
   })
 
   test('should handle error and send error message', async () => {

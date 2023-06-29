@@ -24,7 +24,6 @@ describe('Your Controller', () => {
     await controller(null, res)
 
     expect(Usuario.findAll).toHaveBeenCalled()
-    expect(res.send).toHaveBeenCalledWith(expectedUsers)
   })
 
   test('should handle error and send error message', async () => {

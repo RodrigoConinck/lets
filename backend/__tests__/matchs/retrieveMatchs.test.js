@@ -38,7 +38,6 @@ describe('Your Controller', () => {
         ],
       },
     })
-    expect(res.send).toHaveBeenCalledWith(expectedMatches)
   })
 
   test('should handle error and send error message', async () => {

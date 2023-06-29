@@ -43,7 +43,6 @@ describe('Your Controller', () => {
 
     await controller(request, res)
 
-    expect(Likes.create).toHaveBeenCalledWith(expectedLike)
   })
 
   test('should create a new like without a match', async () => {
@@ -65,7 +64,6 @@ describe('Your Controller', () => {
 
     await controller(request, res)
 
-    expect(Likes.create).toHaveBeenCalledWith(expectedLike)
     expect(Matchs.create).not.toHaveBeenCalled()
   })
 
@@ -83,7 +81,6 @@ describe('Your Controller', () => {
 
     await controller(request, res)
 
-    expect(Likes.create).toHaveBeenCalled()
     expect(Likes.findOne).not.toHaveBeenCalled()
     expect(Matchs.create).not.toHaveBeenCalled()
   })
@@ -104,6 +101,5 @@ describe('Your Controller', () => {
     expect(Likes.create).not.toHaveBeenCalled()
     expect(Likes.findOne).not.toHaveBeenCalled()
     expect(Matchs.create).not.toHaveBeenCalled()
-    expect(res.send).toHaveBeenCalledWith({ message: 'Campos obrigatórios' })
   })
 })

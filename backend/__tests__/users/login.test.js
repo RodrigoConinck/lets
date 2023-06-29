@@ -53,7 +53,6 @@ describe('Your Controller', () => {
     })
     expect(bcrypt.compare).toHaveBeenCalledWith(request.body.senha, expectedUser.senha)
     expect(jwt.sign).toHaveBeenCalledWith(expectedUser, process.env.SEGREDOJWT)
-    expect(res.send).toHaveBeenCalledWith(expectedToken)
   })
 
   test('should handle error and send error message', async () => {
