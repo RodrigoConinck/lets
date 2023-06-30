@@ -39,10 +39,12 @@ describe('Your Controller', () => {
 
     const res = {
       send: jest.fn(),
+      status: jest.fn().mockReturnThis(),
     }
 
     await controller(request, res)
 
+    expect(res.send).toHaveBeenCalled()
   })
 
   test('should create a new like without a match', async () => {
@@ -60,10 +62,12 @@ describe('Your Controller', () => {
 
     const res = {
       send: jest.fn(),
+      status: jest.fn().mockReturnThis(),
     }
 
     await controller(request, res)
 
+    expect(res.send).toHaveBeenCalled()
     expect(Matchs.create).not.toHaveBeenCalled()
   })
 
@@ -75,14 +79,17 @@ describe('Your Controller', () => {
       },
     }
 
+    const expectedError = new Error('Error creating like')
+    Likes.create.mockRejectedValue(expectedError)
+
     const res = {
       send: jest.fn(),
+      status: jest.fn().mockReturnThis(),
     }
 
     await controller(request, res)
 
-    expect(Likes.findOne).not.toHaveBeenCalled()
-    expect(Matchs.create).not.toHaveBeenCalled()
+    expect(res.status).toHaveBeenCalledWith(400)
   })
 
   test('should throw error if required fields are missing', async () => {
@@ -94,10 +101,13 @@ describe('Your Controller', () => {
 
     const res = {
       send: jest.fn(),
+      status: jest.fn().mockReturnThis(),
     }
 
     await controller(request, res)
 
+    expect(res.status).toHaveBeenCalledWith(400)
+    expect(res.status().send).toHaveBeenCalled()
     expect(Likes.create).not.toHaveBeenCalled()
     expect(Likes.findOne).not.toHaveBeenCalled()
     expect(Matchs.create).not.toHaveBeenCalled()

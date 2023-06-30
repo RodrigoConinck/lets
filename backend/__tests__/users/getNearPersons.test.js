@@ -20,12 +20,36 @@ describe('Seu Controlador', () => {
         },
       };
 
-      const likes = [
+      const expectedLikes = [
         { fk_curtido: 2 },
         { fk_curtido: 3 },
       ];
+      Likes.findAll.mockResolvedValue(expectedLikes);
 
-      Likes.findAll.mockResolvedValue(likes);
+      const currentCity = { cidade: 'Exemplo' };
+
+      const expectedUsuarios = [
+        { id: 2, nome: 'John Doe', cidade: 'Exemplo' },
+        { id: 3, nome: 'Jane Smith', cidade: 'Exemplo' },
+      ];
+
+      const expectedUsuarioComIdade = [
+        { id: 2, nome: 'John Doe', cidade: 'Exemplo', idade: 30 },
+        { id: 3, nome: 'Jane Smith', cidade: 'Exemplo', idade: 25 },
+      ];
+
+      const res = {
+        send: jest.fn(),
+        status: jest.fn().mockReturnThis(),
+      };
+
+      await controller(req, res);
+
+      expect(Likes.findAll).toHaveBeenCalledWith({
+        where: {
+          fk_curtidor: req.infUser.id,
+        },
+      });
     });
 
     it('deve lançar um erro se ocorrer um erro durante a consulta', async () => {
@@ -37,6 +61,20 @@ describe('Seu Controlador', () => {
       };
 
       Likes.findAll.mockRejectedValue(new Error('Erro na consulta de likes'));
+
+      const res = {
+        send: jest.fn(),
+        status: jest.fn().mockReturnThis(),
+      };
+
+      await controller(req, res);
+
+      expect(Likes.findAll).toHaveBeenCalledWith({
+        where: {
+          fk_curtidor: req.infUser.id,
+        },
+      });
+      expect(res.status).toHaveBeenCalledWith(400);
     });
   });
 
@@ -48,9 +86,12 @@ describe('Seu Controlador', () => {
 
       const res = {
         send: jest.fn(),
+        status: jest.fn().mockReturnThis(),
       };
 
       await controller(req, res);
+
+      expect(res.status).toHaveBeenCalledWith(400);
     });
   });
 });
