@@ -17,14 +17,20 @@ describe('Seu Controlador', () => {
         },
       };
 
-      const user = {
+      const expectedUser = {
         id: 1,
         nome: 'Exemplo',
         email: 'exemplo@example.com',
       };
 
-      Usuario.findOne.mockResolvedValue(user);
+      Usuario.findOne.mockResolvedValue(expectedUser);
 
+      const res = {
+        send: jest.fn(),
+        status: jest.fn().mockReturnThis(),
+      };
+
+      expect(res.status).not.toHaveBeenCalled();
     });
 
     it('deve lançar um erro se ocorrer um erro durante a consulta', async () => {
@@ -35,6 +41,12 @@ describe('Seu Controlador', () => {
       };
 
       Usuario.findOne.mockRejectedValue(new Error('Erro na consulta'));
+
+      const res = {
+        send: jest.fn(),
+        status: jest.fn().mockReturnThis(),
+      };
+      expect(res.send).not.toHaveBeenCalled();
     });
   });
 
@@ -42,16 +54,17 @@ describe('Seu Controlador', () => {
     it('deve retornar o usuário corretamente', async () => {
       const req = {};
 
-      const user = {
+      const expectedUser = {
         id: 1,
         nome: 'Exemplo',
         email: 'exemplo@example.com',
       };
 
-      controller.getUser = jest.fn().mockResolvedValue(user);
+      controller.getUser = jest.fn().mockResolvedValue(expectedUser);
 
       const res = {
         send: jest.fn(),
+        status: jest.fn().mockReturnThis(),
       };
 
       await controller(req, res);
@@ -64,9 +77,12 @@ describe('Seu Controlador', () => {
 
       const res = {
         send: jest.fn(),
+        status: jest.fn().mockReturnThis(),
       };
 
       await controller(req, res);
+
+      expect(res.status).toHaveBeenCalledWith(400);
     });
   });
 });

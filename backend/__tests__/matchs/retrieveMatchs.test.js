@@ -26,6 +26,7 @@ describe('Your Controller', () => {
 
     const res = {
       send: jest.fn(),
+      status: jest.fn().mockReturnThis(),
     }
 
     await controller(request, res)
@@ -47,8 +48,12 @@ describe('Your Controller', () => {
       },
     }
 
+    const expectedError = new Error('Error retrieving matches')
+    Matchs.findAll.mockRejectedValue(expectedError)
+
     const res = {
       send: jest.fn(),
+      status: jest.fn().mockReturnThis(),
     }
 
     await controller(request, res)
@@ -61,5 +66,6 @@ describe('Your Controller', () => {
         ],
       },
     })
+    expect(res.status).toHaveBeenCalledWith(400)
   })
 })
