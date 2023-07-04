@@ -1,0 +1,19 @@
+documentação do caso de uso
+UC SISTEMA LETS
+
+Atores: atleta
+Fluxo principal: 
+1- criar cadastro de atleta
+2- fazer login
+3- gerenciar dados do perfil do atleta
+4- listar atletas próximos
+5- verificar matchs
+
+Fluxo Alternativo:
+1.1- cadastro já existe: ir pro passo 2
+2.1- email ou senha inválidos: mostrar mensagem de erro, ir para passo 2
+4.1- não há atletas disponíveis: mostrar mensagem, voltar para o passo 3
+4.2- convidar atleta
+4.3- match criado: mostrar mensagem de match
+5.1- não existem matchs: mostrar mensage, voltar para o passo 4
+5.2- iniciar conversa com atleta convidado: abrir app whatsapp
