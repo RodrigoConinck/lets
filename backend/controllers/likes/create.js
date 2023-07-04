@@ -6,7 +6,7 @@ module.exports = async(req, res) => {
         const requestData = await extractData(req)
         await analyseData(requestData)
         const newLike = await createNewLike(req)
-        const isMatch = await verifyMatch(newLike)
+        await verifyMatch(newLike)
         return res.send(newLike)
     } catch (error) {
         return res.status(400).send({message: error.message});
@@ -47,7 +47,6 @@ async function verifyMatch(newLike){
                 [Op.and]: [{ fk_curtidor: newLike.fk_curtido }, { fk_curtido: newLike.fk_curtidor }],
             }
         })
-        let match = null
         console.log(isMatch)
         if(isMatch){
            await Matchs.create({
