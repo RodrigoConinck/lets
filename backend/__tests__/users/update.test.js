@@ -47,14 +47,6 @@ describe('Your Controller', () => {
   })
 
   test('should throw error if id is missing', async () => {
-    const request = {
-      query: {},
-      body: {
-        nome: 'Novo Nome',
-        altura: 180,
-      },
-    }
-
     const res = {
       send: jest.fn(),
     }

@@ -99,10 +99,9 @@ export default {
           this.dialogVisible = true;
         })
         .catch((error) => {
-          if (error.response && error.response.data && error.response.data.message === "SequelizeUniqueConstraintError: Validation error") {
+          if (error.response.data.message === "SequelizeUniqueConstraintError: Validation error") {
             this.errorMessage = "O e-mail já está sendo utilizado.";
           }
-          console.log('=================================')
         });
     },
     onDialogHidden() {

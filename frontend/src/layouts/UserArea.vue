@@ -3,7 +3,6 @@
     <q-layout class="shadow-2 fullscreen rounded-borders">
       <q-header elevated class="q-pa-sm" style="align-items: center">
         <q-toolbar class="justify-center">
-          <!-- <q-btn flat round dense icon="menu" class="q-mr-sm" /> -->
 
           <q-toolbar-title>
             <q-avatar>

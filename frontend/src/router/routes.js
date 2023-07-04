@@ -12,10 +12,6 @@ const routes = [
     component: () => import('layouts/CreateUser.vue'),
   },
   {
-    path: '/MainPageUser',
-    component: () => import('src/layouts/MainPageUser.vue'),
-  },
-  {
     path: '/UserArea',
     component: () => import('src/layouts/UserArea.vue')
   }
