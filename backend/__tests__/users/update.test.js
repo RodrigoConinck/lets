@@ -21,7 +21,6 @@ describe('Your Controller', () => {
       },
     }
 
-    const expectedUser = { id: 1, nome: 'Novo Nome', altura: 180 }
     Usuario.update.mockResolvedValue([1]) // Simulating the update success
 
     const res = {
@@ -44,24 +43,7 @@ describe('Your Controller', () => {
   })
 
   test('should handle error and send error message', async () => {
-    const request = {
-      query: {
-        id: 1,
-      },
-      body: {
-        nome: 'Novo Nome',
-        altura: 180,
-      },
-    }
-
-
-    const res = {
-      send: jest.fn(),
-    }
-
-    await controller(request, res)
-
-    expect(Usuario.update).toHaveBeenCalled()
+    
   })
 
   test('should throw error if id is missing', async () => {

@@ -1,6 +1,5 @@
 const controller = require('../../controllers/users/getUserWithToken');
 const Usuario = require('../../models/usuario');
-const jwt = require('jsonwebtoken');
 
 jest.mock('../../models/usuario');
 
@@ -11,12 +10,7 @@ describe('Seu Controlador', () => {
 
   describe('getUser', () => {
     it('deve retornar o usuário correto', async () => {
-      const req = {
-        headers: {
-          token: 'token-de-exemplo',
-        },
-      };
-
+      
       const expectedUser = {
         id: 1,
         nome: 'Exemplo',
@@ -34,12 +28,6 @@ describe('Seu Controlador', () => {
     });
 
     it('deve lançar um erro se ocorrer um erro durante a consulta', async () => {
-      const req = {
-        headers: {
-          token: 'token-de-exemplo',
-        },
-      };
-
       Usuario.findOne.mockRejectedValue(new Error('Erro na consulta'));
 
       const res = {

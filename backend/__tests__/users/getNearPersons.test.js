@@ -26,18 +26,6 @@ describe('Seu Controlador', () => {
       ];
       Likes.findAll.mockResolvedValue(expectedLikes);
 
-      const currentCity = { cidade: 'Exemplo' };
-
-      const expectedUsuarios = [
-        { id: 2, nome: 'John Doe', cidade: 'Exemplo' },
-        { id: 3, nome: 'Jane Smith', cidade: 'Exemplo' },
-      ];
-
-      const expectedUsuarioComIdade = [
-        { id: 2, nome: 'John Doe', cidade: 'Exemplo', idade: 30 },
-        { id: 3, nome: 'Jane Smith', cidade: 'Exemplo', idade: 25 },
-      ];
-
       const res = {
         send: jest.fn(),
         status: jest.fn().mockReturnThis(),
