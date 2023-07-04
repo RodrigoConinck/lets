@@ -26,12 +26,7 @@
 </template>
 
 <script>
-// import { resetTracking } from '@vue/reactivity'
-// import { useQuasar } from 'quasar'
-// import { ref } from 'vue'
-// import { logicalExpression } from '@babel/types';
 import axios from "axios"
-import { Vue, router } from 'vue-router'
 
 export default {
   data() {
@@ -43,7 +38,7 @@ export default {
   },
   methods:{
     reset(){
-      this.email ='',
+      this.email =''
       this.password=''
     },
     login() {

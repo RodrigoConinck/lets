@@ -1,4 +1,4 @@
-documentação do caso de uso
+Documentação de Casos de Uso
 UC SISTEMA LETS
 
 Atores: atleta

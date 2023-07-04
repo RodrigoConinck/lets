@@ -2,11 +2,8 @@ const usuario = require('../../models/usuario')
 const fs = require('fs');
 const cloudinary = require('cloudinary').v2;
 
-module.exports = async (req, res) => {
-    const { originalname, mimetype, filename, path } = req.file;
-    // console.log(req.file)
-    let extension = req.file.mimetype
-    extension = extension.substring(6)
+module.exports = async (req) => {
+    const { path } = req.file;
     cloudinary.config({ 
         cloud_name: process.env.CLOUD_NAME, 
         api_key: process.env.API_KEY, 
