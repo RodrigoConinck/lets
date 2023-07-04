@@ -74,7 +74,6 @@ export default {
     const token = localStorage.getItem('TOKEN');
     if (!token) {
       this.$router.push('/login');
-      return;
     }
   },
   beforeUnmount() {

@@ -42,9 +42,7 @@
 </template>
 
 <script>
-import { QSelect } from 'quasar';
-import { QToggle } from 'quasar';
-import { QInput } from 'quasar';
+import { QSelect, QToggle, QInput } from 'quasar';
 
 import axios from 'axios'
 export default {
