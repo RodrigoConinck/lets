@@ -3,10 +3,9 @@ const likes = require('./likes')
 const matchs = require('./matchs')
 const bodyParser = require('body-parser')
 
-var jsonParser = bodyParser.json()
+const jsonParser = bodyParser.json()
 
-
-var urlencodedParser = bodyParser.urlencoded({ extended: true })
+const urlencodedParser = bodyParser.urlencoded({ extended: true })
 
 module.exports = (app) => {
 	app.use('/users', jsonParser, urlencodedParser, users)

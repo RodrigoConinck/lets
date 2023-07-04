@@ -13,7 +13,7 @@ const uploadContent = multer({dest: 'uploads/'})
 
 const express = require('express')
 
-var router = express.Router();
+const router = express.Router();
 
 router.post("/create", create_user)
 router.get('/getUser', auth, getUser)

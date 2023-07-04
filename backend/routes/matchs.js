@@ -3,7 +3,7 @@ const auth = require('../middlewares/auth')
 
 const express = require('express')
 
-var router = express.Router();
+const router = express.Router();
 
 router.get("/retrieve", auth, retrieve_match)
 
