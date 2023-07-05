@@ -16,8 +16,6 @@ module.exports = async (req) => {
         if (error) {
           console.error('Erro ao fazer upload da imagem:', error);
         } else {
-          console.log('Imagem hospedada com sucesso!');
-          console.log('Link da imagem:', result.secure_url);
           await usuario.update({foto_perfil: result.secure_url}, {
             where: {
                 id: req.infUser.id
