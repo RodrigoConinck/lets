@@ -78,34 +78,28 @@ export default {
       this.errorMessage = "";
     },
     createUser() {
-      
       if (!this.acceptTerms) {
         this.errorMessage = "Você deve aceitar os termos de uso para criar uma conta.";
         return;
       }
-
       if (!this.name || !this.email || !this.password) {
         this.errorMessage = "Por favor, preencha todos os campos obrigatórios.";
         return;
       }
-
       if (this.password !== this.confirmPassword) {
         this.errorMessage = "As senhas não coincidem.";
         return;
       }
-
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(this.email)) {
         this.errorMessage = "Insira um e-mail válido.";
         return;
       }
-
       const userData = {
         nome: this.name,
         email: this.email,
         senha: this.password,
       };
-
       axios
         .post(process.env.APP_VUE_API + "/users/create", userData)
         .then(() => {
