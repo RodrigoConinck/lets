@@ -71,7 +71,6 @@ export default {
 
       axios.request(config)
         .then((response) => {
-          console.log(JSON.stringify("Exibindo pessoas próximas"));
           this.allPersons = response.data
         })
         .catch((error) => {
@@ -96,15 +95,11 @@ export default {
       };
 
       axios.request(config)
-        .then((response) => {
-          console.log(JSON.stringify("Curtida enviada"));
+        .then(() => {
         })
         .catch((error) => {
           console.log(error);
         });
-
-
-      console.log('Like criado para:', person)
       this.slide++
     },
     nextSlide() {

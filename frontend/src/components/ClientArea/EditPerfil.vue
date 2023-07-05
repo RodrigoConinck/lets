@@ -1,6 +1,5 @@
 <template>
   <div class="user-profile">
-
     <div class="user-profile__avatar">
       <input type="file" accept="image/*" @change="handleFileChange" ref="fileInput" style="display: none">
       <img style="max-width: 200px; max-height: 200px" alt="foto_perfil" v-if="foto_perfil" size="150px"
@@ -30,22 +29,51 @@
           <button @click="adicionarAtividade">Adicionar</button>
         </div>
         <p></p>
-
       </div>
       <q-input outlined class="q-mb-sm" v-model="frequencia" label="Frequência"></q-input>
       <q-toggle v-model="ativo_fisicamente" label="Ativo Fisicamente"></q-toggle>
       <q-input type="number" outlined class="q-mb-sm" v-model="whatsapp" label="WhatsApp"
         placeholder="(99) 99999-9999"></q-input>
-      <q-btn color="primary" label="Salvar" @click="editProfile()"></q-btn>
+      <q-btn color="primary" label="Salvar" @click="editProfile"></q-btn>
     </div>
+    <q-dialog v-model="dialogVisible">
+      <q-card>
+        <q-card-section class="text-center">
+          <q-icon name="done" color="primary" size="2em" />
+          <h4 class="q-mt-md">Perfil Atualizado</h4>
+        </q-card-section>
+      </q-card>
+    </q-dialog>
+    <q-dialog v-model="dialogDataNascimentoInvalida">
+      <q-card>
+        <q-card-section class="text-center">
+          <q-icon name="error" color="negative" size="2em" />
+          <h4 class="q-mt-md">Data de Nascimento Inválida</h4>
+          <p>A data de nascimento precisa ser no passado.</p>
+        </q-card-section>
+        <q-card-actions align="right">
+          <q-btn color="primary" label="OK" @click="dialogDataNascimentoInvalida = false" />
+        </q-card-actions>
+      </q-card>
+    </q-dialog>
+  
   </div>
 </template>
 
 <script>
-import { QSelect, QToggle, QInput } from 'quasar';
+import { QSelect, QToggle, QInput, QDialog, QCard, QCardSection, QIcon } from 'quasar';
 
 import axios from 'axios'
 export default {
+  components: {
+    QSelect,
+    QToggle,
+    QInput,
+    QDialog,
+    QCard,
+    QCardSection,
+    QIcon
+  },
   data() {
     return {
       id: null,
@@ -64,7 +92,9 @@ export default {
       createdAt: null,
       updatedAt: null,
       whatsapp: null,
-      novaAtividade: ''
+      novaAtividade: '',
+      dialogVisible: false,
+      dialogDataNascimentoInvalida: false
     };
   },
   mounted() {
@@ -113,6 +143,14 @@ export default {
       this.atividades_preferenciais.splice(index, 1);
     },
     editProfile() {
+      const dataNascimento = new Date(this.data_nascimento);
+      const dataAtual = new Date();
+
+      if (dataNascimento >= dataAtual) {
+        this.dialogDataNascimentoInvalida = true;
+        return;
+      }
+
       const payload = {
         nome: this.nome,
         data_nascimento: this.data_nascimento,
@@ -142,7 +180,7 @@ export default {
 
       axios.request(config)
         .then(() => {
-          console.log("Perfil Atualizado");
+          this.dialogVisible = true;
         })
         .catch((error) => {
           console.log(error);

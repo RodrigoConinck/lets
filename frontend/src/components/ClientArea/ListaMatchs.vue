@@ -59,7 +59,6 @@ export default {
 
             axios.request(config)
                 .then((response) => {
-                    console.log(JSON.stringify("Exibindo lista de Matchs"));
                     this.matchList = response.data
                 })
                 .catch((error) => {

@@ -10,17 +10,13 @@ const login = async (email, senha) =>{
                 senha: senha
             }
         });
-        console.log(usuario)
         let token = null
         if(usuario){
             token = jwt.sign(usuario, process.env.SEGREDOJWT);
         }
-        //const token = jwt.sign(usuario, process.env.SEGREDOJWT)
-        console.log(token)
         return token
     } catch (error) {
         console.log(error)
-        //throw new Error(error)
     }
 };
 

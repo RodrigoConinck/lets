@@ -11,7 +11,7 @@
             LETS
           </q-toolbar-title>
 
-          <q-btn flat round dense icon="whatshot" @click="logout" />
+          <q-btn flat round dense @click="logout">Logout</q-btn>
         </q-toolbar>
 
         <q-tabs v-model="tab" class="justify-center">

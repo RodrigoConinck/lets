@@ -1,7 +1,7 @@
 const Usuario = require('../../models/usuario')
 const bcrypt = require('bcrypt');
 
-module.exports = async(req, res) => {
+module.exports = async (req, res) => {
     try {
         const requestData = await extractData(req)
         await analyseData(requestData)
@@ -10,7 +10,7 @@ module.exports = async(req, res) => {
     } catch (error) {
         console.log(error)
         res.status(404)
-        res.status(400).send({message: error.message});
+        res.status(400).send({ message: error.message });
     }
 }
 
@@ -24,10 +24,14 @@ async function extractData(request) {
 
 async function analyseData(request) {
     const { nome, email, senha } = request
-    if(!nome || !email || !senha) {
+    if (nome === null || email === null || senha === null){
         throw new Error('Campos obrigatórios')
     }
+    if (!nome || !email || !senha){
+        throw new Error('Os campos não podem estar vazios')
+    }
 }
+
 
 async function createNewUser(request) {
     try {
