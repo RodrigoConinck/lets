@@ -30,7 +30,7 @@
             <ListaLikes />
           </q-page>
           <q-page class="q-pa-md" v-if="tab === 'matchs'">
-            <ListaMatchs />
+            <ListaMatchs/>
           </q-page>
         </q-scroll-area>
       </q-page-container>
