@@ -78,6 +78,7 @@ export default {
       this.errorMessage = "";
     },
     createUser() {
+      
       if (!this.acceptTerms) {
         this.errorMessage = "Você deve aceitar os termos de uso para criar uma conta.";
         return;
